@@ -38,7 +38,7 @@ function ordenar(x) {
 function mostrar(x) {
     let i = 1;
     x.forEach(p => {
-     console.log(`${i}. ${p.nombre}, que tardo ${p.tiempo} milisengundos`)
+     console.log(`${i}. ${p.nombre}, que tardo ${p.tiempo} milisengundos.`)
      i++
     });
 }
