@@ -5,41 +5,43 @@
     
     Nota: no se olviden de generar un commit en sus repositorio por cada ejercicio que finalizan. */
     function generateRandomInt(){
-        return Math.floor((Math.random() * (20000-10000)) + 10000);
-    } 
+        return Math.floor((Math.random() * (3000-10000)) + 10000);
+    }
+const pilotos = [] 
+function generarPilotos(cantidadPilotos){
+    for (let index = 1; index < cantidadPilotos-1; index++) {
+        pilotos.push({
+            promesa: new Promise((resolve, reject) => { 
+                setTimeout(() => {
+               resolve(`piloto ${index}`)
+              }, y=generateRandomInt())
+              }),
+              nombre: `piloto ${index}`,
+              tiempo: y })
+        
+    }
+    return pilotos;
+}
 
-const verstappen = {
-    promesa: new Promise((resolve, reject) => { 
-        setTimeout(() => {
-       resolve('Verstappen')
-      }, generateRandomInt())
-      }), 
-      nombre : "Verstappen" }
+function correr(pilots) {
+ Promise.all(pilots).then(x => {
+   console.log('RESULTADOS DE LA CARRERA:')
+   ordenar(x)
+   mostrar(x)
+});
+}
 
-const hamilton = {
-    promesa: new Promise((resolve, reject) => { 
-        setTimeout(() => {
-       resolve('Hamilton')
-      }, generateRandomInt())
-      }), 
-      nombre: "Hamilton" };
+function ordenar(x) {
+    return x.sort((a, b) =>{ return a.tiempo - b.tiempo })
+}
 
-const leclerc = {
-    promesa: new Promise((resolve, reject) => { 
-        setTimeout(() => {
-       resolve('Leclerc')
-      }, generateRandomInt())
-      }),
-      nombre: "Leclerc" };
-
-const pilotos = [verstappen, hamilton, leclerc]
-
-function correr(pilotos) {
-    const copia = pilotos
-    const copiaPromesas = pilotos.promesa;
-    Promise.race(copiaPromesas).then((value) => {
-     console.log(value);
+function mostrar(x) {
+    let i = 1;
+    x.forEach(p => {
+     console.log(`${i}. ${p.nombre}, que tardo ${p.tiempo} milisengundos`)
+     i++
     });
 }
 
-correr(pilots)
+veintePilotos = generarPilotos(20)
+correr(veintePilotos)
