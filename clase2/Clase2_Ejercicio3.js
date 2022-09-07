@@ -6,7 +6,11 @@
     {nombre:"La casa de papel", anioEstreno:2017},
     {nombre:"How I Met Your Mother", anioEstreno:2005 }
 ]
- 
-const copia = series.filter((serie) => serie.nombre != "Friends")
+
+function cambiar(titulo) {
+const copia = series.filter((serie) => serie.nombre != titulo)
+}
+cambiar("Friends")
 console.log(copia)
 console.log(series)
+
